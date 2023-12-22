@@ -13,7 +13,8 @@ export function LandingSection() {
     
     return () => clearTimeout(timer);
   });
-  return <div>
+
+  return <div id="landing-section">
     <h2>I'm Ahsan and I make</h2>
     <h2>{categories[index]}</h2>
   </div>;

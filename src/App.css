@@ -1,13 +1,16 @@
 #cursor{
-    background-color: black;
+    background-color: white;
+    border-radius: 1rem;
     width: 0.5em;
     height: 10em;
 }
 
-#hero{
+#hero-section{
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    height: 100vh;
 }
 
 #hero-name{
@@ -19,4 +22,16 @@
 
 #hero-name, #hero-caption{
     padding: 12pt;
+}
+
+#landing-section{
+    height: 100vh;
+}
+
+#skills-section{
+    height: 100vh;
+}
+
+#projects-section{
+    height: 100vh;
 }
