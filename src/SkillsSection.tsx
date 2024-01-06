@@ -18,34 +18,38 @@ import LinuxLogo from "./assets/SVG/Linux.svg";
 import FlutterLogo from "./assets/SVG/Flutter.svg";
 import DartLogo from "./assets/SVG/Dart.svg";
 
-
+import { SkillsCanvas } from "./SkillsCanvas";
 
 export function SkillsSection() {
 
+
+
+
   return <div id="skills-section">
-    <h2>My Skills Include:</h2>
-    <div id="skill-table">
-    <SkillTable category="Games" languages={[CPPLogo, CSLogo]} frameworks={[UnrealLogo, UnityLogo]}/>
-    <SkillTable category="Websites" languages={[HTMLLogo, CSSLogo, TSLogo, JSLogo]} frameworks={[ReactLogo, AngularLogo]}/>
-    <SkillTable category="Apps" languages={[CPPLogo, CSLogo, DartLogo]} frameworks={[WindowsLogo, DotNETLogo, FlutterLogo]}/>
-    <SkillTable category="Misc" languages={[CLogo]} frameworks={[ArduinoLogo, ShadertoyLogo, LinuxLogo]}/>
+    <SkillsCanvas />
+    <div id="skills">
+      <h2>My Skills Include:</h2>
+      <div id="skills-table">
+        <Skill title="Games" frameworks={[UnrealLogo, UnityLogo]} languages={[CPPLogo, CSLogo]} />
+        <Skill title="Websites" frameworks={[ReactLogo, AngularLogo]} languages={[HTMLLogo, CSSLogo, TSLogo, JSLogo]} />
+        <Skill title="Apps" frameworks={[WindowsLogo, FlutterLogo, DotNETLogo]} languages={[CPPLogo, DartLogo, CSLogo]} />
+        <Skill title="Experiments" frameworks={[ShadertoyLogo, ArduinoLogo, LinuxLogo]} languages={[CLogo]} />
+
+      </div>
     </div>
-    
+  </div>;
+}
+function Skill(props: { title: string, frameworks: string[], languages: string[] }) {
+  return <div id="skill">
+    <h3>{props.title}</h3>
+
+    <div>
+      {props.frameworks.map((e, i) => <img src={e} key={i} />)}
+    </div>
+    <div>
+      {props.languages.map((e, i) => <img src={e} key={i} />)}
+    </div>
+
   </div>;
 }
 
-function SkillTable(props:{category:string, frameworks?:string[], languages?:string[]}) {
-  return <div className="skill-category">
-    <h3>{props.category}</h3>
-    <div className="frameworks">
-      {props.frameworks?.map(
-        (e,i)=><img src={e} key={i}/>
-      )}
-    </div>
-    <div className="languages">
-      {props.languages?.map(
-        (e,i)=><img src={e} key={i}/>
-      )}
-    </div>
-  </div>;
-}
