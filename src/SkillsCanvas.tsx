@@ -6,7 +6,6 @@ class Particle {
 
   ReDraw(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
     this.AddVelocity(canvas); 
-    this.DrawParticle(ctx);
   }
 
   x: number;
@@ -16,12 +15,11 @@ class Particle {
   constructor(w: number, h: number, mv: number) {
     this.x = Math.random() * w
     this.y = Math.random() * h
-    this.velX = (Math.random() - 0.5) * 2 * mv
-    this.velY = (Math.random() - 0.5) * 2 * mv
+    this.velX = (Math.random() - 0.5) * mv
+    this.velY = (Math.random() - 0.5) * mv
   }
 
-  private DrawParticle(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = "#FFFFFF";
+  DrawParticle(ctx: CanvasRenderingContext2D) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
     ctx.closePath();
@@ -45,8 +43,8 @@ class Particle {
 
 function SetupCanvas(canvasRef: React.MutableRefObject<HTMLCanvasElement | null>) {
   let particles: Particle[] = []
-  let maxParticles = 150;
-  let maxVelocity = 1.25;
+  let maxParticles = 250;
+  let maxVelocity = 4;
   let maxLineDistance = 150;
   let lineWidth = 2.5;
   if (!canvasRef.current) { return; }
@@ -96,6 +94,8 @@ function SetupCanvas(canvasRef: React.MutableRefObject<HTMLCanvasElement | null>
         if (distance > maxLineDistance) { continue; }
         ctx.lineWidth = lineWidth
         ctx.strokeStyle = `rgba(255,255,255,${0.75 - distance / maxLineDistance})`
+        ctx.fillStyle = `rgba(255,255,255,${0.75 - distance / maxLineDistance})` 
+        jelement.DrawParticle(ctx)
         ctx.beginPath()
         ctx.moveTo(element.x, element.y)
         ctx.lineTo(jelement.x, jelement.y)
