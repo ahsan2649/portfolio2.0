@@ -435,17 +435,16 @@
     
     
     .project{
-        width: 7em;
-        height: 4em;
+        width: 75%;
+        height: 5em;
         overflow: hidden;
         display: flex;
         justify-content: center;
         
-        border: 3px solid rgba(255,255,255,0.25);
         border-radius: 1em;
     
         img{
-            max-height: 100%;
+            max-width: 100%;
             
         }
     }
