@@ -1,4 +1,3 @@
-import { CSSProperties } from "react";
 import UnityLogo from "./assets/Logos/SVG/Unity.svg";
 import UnrealLogo from "./assets/Logos/SVG/Unreal.svg";
 import CSLogo from "./assets/Logos/SVG/CS.svg";
