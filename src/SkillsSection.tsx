@@ -1,23 +1,24 @@
-import UnityLogo from "./assets/Logos/SVG/Unity.svg";
-import UnrealLogo from "./assets/Logos/SVG/Unreal.svg";
-import CSLogo from "./assets/Logos/SVG/CS.svg";
-import CPPLogo from "./assets/Logos/SVG/CPP.svg";
-import CLogo from "./assets/Logos/SVG/C.svg";
-import CSSLogo from "./assets/Logos/SVG/CSS.svg";
-import AngularLogo from "./assets/Logos/SVG/Angular.svg";
-import ReactLogo from "./assets/Logos/SVG/React.svg";
-import HTMLLogo from "./assets/Logos/SVG/HTML.svg";
-import ShadertoyLogo from "./assets/Logos/SVG/Shadertoy.svg";
-import JSLogo from "./assets/Logos/SVG/JS.svg";
-import TSLogo from "./assets/Logos/SVG/TS.svg";
-import WindowsLogo from "./assets/Logos/SVG/Windows.svg";
-import ArduinoLogo from "./assets/Logos/SVG/Arduino.svg";
-import DotNETLogo from "./assets/Logos/SVG/DotNET.svg";
-import LinuxLogo from "./assets/Logos/SVG/Linux.svg";
-import FlutterLogo from "./assets/Logos/SVG/Flutter.svg";
-import DartLogo from "./assets/Logos/SVG/Dart.svg";
+import UnityLogo from "./assets/Logos/PNG/Unity.png";
+import UnrealLogo from "./assets/Logos/PNG/Unreal.png";
+import CSLogo from "./assets/Logos/PNG/CS.png";
+import CPPLogo from "./assets/Logos/PNG/CPP.png";
+import CLogo from "./assets/Logos/PNG/C.png";
+import CSSLogo from "./assets/Logos/PNG/CSS.png";
+import AngularLogo from "./assets/Logos/PNG/Angular.png";
+import ReactLogo from "./assets/Logos/PNG/React.png";
+import HTMLLogo from "./assets/Logos/PNG/HTML.png";
+import ShadertoyLogo from "./assets/Logos/PNG/Shadertoy.png";
+import JSLogo from "./assets/Logos/PNG/JS.png";
+import TSLogo from "./assets/Logos/PNG/TS.png";
+import WindowsLogo from "./assets/Logos/PNG/Windows.png";
+import ArduinoLogo from "./assets/Logos/PNG/Arduino.png";
+import DotNETLogo from "./assets/Logos/PNG/DotNET.png";
+import LinuxLogo from "./assets/Logos/PNG/Linux.png";
+import FlutterLogo from "./assets/Logos/PNG/Flutter.png";
+import DartLogo from "./assets/Logos/PNG/Dart.png";
 
 import { SkillsCanvas } from "./SkillsCanvas";
+import { motion } from "framer-motion";
 
 export function SkillsSection() {
 
@@ -43,10 +44,10 @@ function Skill(props: { title: string, frameworks: string[], languages: string[]
     <h3>{props.title}</h3>
 
     <div>
-      {props.frameworks.map((e, i) => <img src={e} key={i} />)}
+      {props.frameworks.map((e, i) => <motion.img initial={{ y:50,opacity: 0 }} whileInView={{y:0, opacity: 1 }} transition={{duration:0.75}} viewport={{once:false}} src={e} key={i} />)}
     </div>
     <div>
-      {props.languages.map((e, i) => <img src={e} key={i} />)}
+      {props.languages.map((e, i) => <motion.img initial={{ y:50,opacity: 0 }} whileInView={{y:0, opacity: 1 }} transition={{duration:0.75}} viewport={{once:false}} src={e} key={i+props.frameworks.length} />)}
     </div>
 
   </div>;

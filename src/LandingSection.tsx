@@ -15,6 +15,7 @@ import exp2 from "./assets/LandingPics/exp2.jpg"
 import exp3 from "./assets/LandingPics/exp3.jpg"
 import exp4 from "./assets/LandingPics/exp4.jpg"
 import exp5 from "./assets/LandingPics/exp5.png"
+import { AnimatePresence, motion } from "framer-motion";
 
 
 
@@ -41,18 +42,26 @@ export function LandingSection() {
   return <div id="landing-section">
     <div className="caption">
       <h2>I'm Ahsan and I make</h2>
-      <h2 className="caption-name">{categories[index]}</h2>
+      <motion.h2
+        key={categories[index]}
+        initial={{ x: 50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -50, opacity: 0 }}
+        transition={{ duration: 0.675 }}
+        className="caption-name">{categories[index]}</motion.h2>
     </div>
-    <Collage entry={categories[index]}/>
+    <AnimatePresence>
+      <Collage entry={categories[index]} />
+    </AnimatePresence>
   </div>;
 }
 
 
-function Collage(props:{entry:string}) {
-  let entries:Record<string, any> = {
-    "Games" : GameItems(),
-    "Websites" : WebItems(),
-    "Apps" : AppItems(),
+function Collage(props: { entry: string }) {
+  let entries: Record<string, any> = {
+    "Games": GameItems(),
+    "Websites": WebItems(),
+    "Apps": AppItems(),
     "Experiments": ExpItems()
   }
 
@@ -60,72 +69,50 @@ function Collage(props:{entry:string}) {
     {entries[props.entry]}
   </>;
 }
+function randomDirection() {
+  return Math.sign(Math.random() - 0.5) * 2
+}
+
+function LandingItem(props: { image: string, style: {} }) {
+  return <motion.div key={props.image} initial={{ y: randomDirection() * 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: randomDirection() * 50, opacity: 0 }} transition={{ duration: 1 }} className="landing-item" style={props.style}>
+    <img src={props.image} />
+  </motion.div>;
+}
 
 function GameItems() {
   return <>
-    <div className="landing-item" style={{ gridRow: "2/4", gridColumn: "1/5" }}>
-      <img src={game1} />
-    </div>
-    <div className="landing-item" style={{ gridRow: "1/3", gridColumn: "5/9" }}>
-      <img src={game2} />
-    </div>
-    <div className="landing-item" style={{ gridRow: "3/5", gridColumn: "5/9" }}>
-      <img src={game3} />
-    </div>
-    <div className="landing-item" style={{ gridRow: "2/4", gridColumn: "9/13" }}>
-      <img src={game4} />
-    </div>
+    <LandingItem image={game1} style={{ gridRow: "2/4", gridColumn: "1/5" }} />
+    <LandingItem image={game2} style={{ gridRow: "1/3", gridColumn: "5/9" }} />
+    <LandingItem image={game3} style={{ gridRow: "3/5", gridColumn: "5/9" }} />
+    <LandingItem image={game4} style={{ gridRow: "2/4", gridColumn: "9/13" }} />
   </>;
 }
 
+
 function WebItems() {
   return <>
-    <div className="landing-item" style={{ gridColumn: "2/7", gridRow: "1/4", justifyContent: "center" }}>
-      <img src={website2} />
-    </div>
-    <div className="landing-item" style={{ gridColumn: "7/12", gridRow: "2/5", justifyContent: "center" }}>
-      <img src={website1} />
-    </div>
+    <LandingItem image={website2} style={{ gridColumn: "2/7", gridRow: "1/4", justifyContent: "center" }} />
+    <LandingItem image={website1} style={{ gridColumn: "7/12", gridRow: "2/5", justifyContent: "center" }} />
   </>;
 }
 
 function AppItems() {
   return <>
-    <div className="landing-item" style={{ gridRow: "1/4", gridColumn: "2/6", justifyContent: "end" }}>
-      <img src={app2} />
-    </div>
-    <div className="landing-item" style={{ gridRow: "1/5", gridColumn: "6/9", justifyContent: "center", border: "none" }}>
-      <img src={app1} />
-    </div>
-    <div className="landing-item" style={{ gridColumn: "9/12", objectFit: "fill", justifyContent: "center", border: "none" }}>
-      <img src={app3} style={{ borderRadius: "2em" }} />
-    </div>
-    <div className="landing-item" style={{ gridColumn: "10/13", objectFit: "fill", justifyContent: "center", border: "none" }}>
-      <img src={app4} style={{ borderRadius: "2em" }} />
-    </div>
-    <div className="landing-item" style={{ gridColumn: "9/12", objectFit: "fill", justifyContent: "center", border: "none" }}>
-      <img src={app5} style={{ borderRadius: "2em" }} />
-    </div>
+    <LandingItem image={app1} style={{ gridRow: "1/5", gridColumn: "6/9", justifyContent: "center", border: "none" }} />
+    <LandingItem image={app2} style={{ gridRow: "1/4", gridColumn: "2/6", justifyContent: "end" }} />
+    <LandingItem image={app3} style={{ gridColumn: "9/12", objectFit: "fill", justifyContent: "center", border: "none" }} />
+    <LandingItem image={app4} style={{ gridColumn: "10/13", objectFit: "fill", justifyContent: "center", border: "none" }} />
+    <LandingItem image={app5} style={{ gridColumn: "9/12", objectFit: "fill", justifyContent: "center", border: "none" }} />
   </>;
 }
 
 function ExpItems() {
   return <>
-    <div className="landing-item" style={{ gridRow: "3/4", gridColumn: "10/12", justifyContent: "center" }}>
-      <img src={exp1} />
-    </div>
-    <div className="landing-item" style={{ gridRow: "1/2", gridColumn: "10/12", justifyContent: "center" }}>
-      <img src={exp2} />
-    </div>
-    <div className="landing-item" style={{ gridRow: "2/3", gridColumn: "9/11", justifyContent: "center" }}>
-      <img src={exp3} />
-    </div>
-    <div className="landing-item" style={{ gridRow: "2/5", gridColumn: "6/9", justifyContent: "center" }}>
-      <img src={exp4} />
-    </div>
-    <div className="landing-item" style={{ gridRow: "1/4", gridColumn: "2/6" }}>
-      <img src={exp5} />
-    </div>
+    <LandingItem image={exp1} style={{ gridRow: "3/4", gridColumn: "10/12", justifyContent: "center" }} />
+    <LandingItem image={exp2} style={{ gridRow: "1/2", gridColumn: "10/12", justifyContent: "center" }} />
+    <LandingItem image={exp3} style={{ gridRow: "2/3", gridColumn: "9/11", justifyContent: "center" }} />
+    <LandingItem image={exp4} style={{ gridRow: "2/5", gridColumn: "6/9", justifyContent: "center" }} />
+    <LandingItem image={exp5} style={{ gridRow: "1/4", gridColumn: "2/6" }} />
   </>;
 }
 

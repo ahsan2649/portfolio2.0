@@ -26,7 +26,7 @@
 }
 
 #hero-section{
-    margin: 2em 0;
+    margin: 0 0 2em 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,9 +36,11 @@
 
 #hero-name{
     font-size: 48pt;
+    overflow: hidden;
 }
 #hero-caption{
     font-size: 36pt;
+    overflow: hidden;
 }
 
 #hero-name, #hero-caption{
@@ -110,28 +112,31 @@
 
 #skill{
     display: grid;
-    grid-template-rows: 0.25fr 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 0.5fr 1fr 1fr;
     div{
         padding: 1em 0 0 0;
         border-top: 5px solid white;
         display: flex;
-        flex-basis: 1;
+        flex-basis: fit-content;
         flex-wrap: wrap;
-        column-gap:5em;
-        justify-content: center;
-        
+        column-gap: 3em;
+        justify-content: space-evenly;
+        width: 100%;
+
+        img{
+            width: 25%;
+            object-fit: contain;
+        }
     }
 }
 
 #skills-table{
-    padding: 0 15em;
+    padding: 0 5em;
     display: grid;    
     grid-template-columns: repeat(4, 1fr);
     column-gap: 5em;
-    
-    img{
-        max-width: 4em;
-    }
 }
 
 
@@ -162,7 +167,7 @@
 }
 
 #projects-table{
-    padding: 0 15em ;
+    
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 1fr;    
@@ -173,12 +178,14 @@
     text-align: center;
     grid-template-columns: 1fr 5fr;
     .project-carousel{
+        margin: 0 3em;
         display: flex;
         flex-direction: row;
     }
 }
 
 .project-row-right{
+    margin: 0 5em;
     display: grid;
     text-align: center;
     grid-template-columns: 5fr 1fr;

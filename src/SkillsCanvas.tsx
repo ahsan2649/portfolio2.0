@@ -43,7 +43,7 @@ class Particle {
 
 function SetupCanvas(canvasRef: React.MutableRefObject<HTMLCanvasElement | null>) {
   let particles: Particle[] = []
-  let maxParticles = 250;
+  let maxParticles = 100;
   let maxVelocity = 4;
   let maxLineDistance = 150;
   let lineWidth = 2.5;

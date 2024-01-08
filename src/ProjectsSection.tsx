@@ -9,6 +9,7 @@ import deskclock from "./assets/ProjectPics/deskclock.png";
 import prayerclock from "./assets/ProjectPics/prayerclock.png";
 import flashcards from "./assets/ProjectPics/app1.png";
 import shader from "./assets/ProjectPics/shader.jpg";
+import { motion } from "framer-motion";
 
 
 export function ProjectsSection() {
@@ -50,8 +51,8 @@ export function ProjectsSection() {
   </div>;
 }
 function ProjectItem(props: {image?:string, title:string }) {
-  return <div className="project">
+  return <motion.div className="project" whileHover={{scale:1.2}}>
     <img src={props.image}/>
-  </div>;
+  </motion.div>;
 }
 
