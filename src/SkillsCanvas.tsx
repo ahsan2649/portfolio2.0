@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 class Particle {
 
-  ReDraw(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
+  ReDraw(canvas: HTMLCanvasElement) {
     this.AddVelocity(canvas); 
   }
 
@@ -82,7 +82,7 @@ function SetupCanvas(canvasRef: React.MutableRefObject<HTMLCanvasElement | null>
 
     for (let index = 0; index < particles.length; index++) {
       const element = particles[index];
-      element.ReDraw(ctx, canvas);
+      element.ReDraw(canvas);
     }
 
     for (let index = 0; index < particles.length; index++) {
