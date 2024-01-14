@@ -10,6 +10,7 @@ import DeskClock from "./assets/ProjectPics/deskclock.png";
 import CustomPlugin from "./assets/ProjectPics/customplugin.png";
 import PrayerClock from "./assets/ProjectPics/prayerclock.png";
 import PaulOak from "./assets/ProjectPics/paul_oak.png";
+import no_u from "./assets/ProjectPics/no_u.png";
 import {motion} from "framer-motion";
 
 
@@ -90,6 +91,13 @@ const items = [
         title: "Paul_Oak",
         category: "Apps",
         description:"Paul_Oak is a flashcard app made in Flutter. The name is just a spin on a pronunciation of a Bengali word that means a flash. As my first project in flutter, it's merely the product of coming up with my own app to help me practice my German."
+    },
+    {
+        thumbnail: no_u,
+        images:[no_u],
+        title: "no, u",
+        category: "Games",
+        description:"'no, u' is a multiplayer mexican standoff game in Unreal Engine. As my first project, I focused on learning multiplayer game architecture by utilizing RPCs in blueprints. The biggest challenge was replicating custom enums, but later on I settled for conditionals on raw values. The mechanics are simple: the hooligan has to draw and shoot, and the sheriff has to shoot after the hooligans have drawn."
     }
 ]
 
