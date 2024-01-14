@@ -16,58 +16,80 @@ import {motion} from "framer-motion";
 const items = [
     {
         thumbnail: Beatdown,
+        images:[Beatdown],
         title: "Beatdown",
-        category: "Games"
+        category: "Games",
+        description: "Semester Project for BA3, with the theme of Music and the category of Multiplayer Games. With two artists, and two designers, we made a 2D rhythm-based couch co-op shooter. I focused on the rhythm system using FMOD, and helped with the character control. The game was developed in Unity."
     },
     {
         thumbnail: SmokeAndMirrors,
+        images:[SmokeAndMirrors],
         title: "Smoke And Mirrors",
-        category: "Games"
+        category: "Games",
+        description: "Semester Project for BA1, with the theme of Magic and the category of Ludic Games. With two artists and two designers, we made a 2D light-based puzzle game in Unity. My focus was on creating the light interaction system, where objects would be made corporeal by shining specific colors, which can also be mirrored and teleported."
     },
     {
         thumbnail: LostAdrift,
+        images:[LostAdrift],
         title: "Lost Adrift",
-        category: "Games"
+        category: "Games",
+        description:"Semester Project for BA2, with the theme of Hope and the category of Narrative Games. With two artists and two designers, we made a single player horror-themed story game. My contribution was very little, including just an outline shader and a simple raycast proximity system."
     },
     {
         thumbnail: Bokksumeka,
+        images:[Bokksumeka],
         title: "Bokksumeka",
-        category: "Games"
+        category: "Games",
+        description:"Semester Project for BA4, with the category of Experimental Games. With one artist, two designers, and one other programmer, we made a two-player booth-sized controller for a dog-style mech. The legs were controlled by ropes connected to sliders, and the mech had a cannon that fired corresponding to a sequence co-ordinated by lights and switches. The focus of my contributions were to bridge the arduino hardware with Unity. This was achieved by implementing mirrored bitwise operations on both the arduino and the engine."
     },
     {
         thumbnail: Website1,
+        images:[Website1],
         title: "Portfolio 2.0",
-        category: "Websites"
+        category: "Websites",
+        description:"My second portfolio website was made with React and TypeScript, with Framer-Motion for animations. I decided to make this as large of a step up than my first one, so I brought in animations and flair using Canvas and a video of a Shadertoy shader I made."
     },
     {
         thumbnail: Website2,
+        images:[Website2],
         title: "Portfolio 1.0",
-        category: "Websites"
+        category: "Websites",
+        description:"My first portfolio website was made with Angular and Vite. I prefer TypeScript over JavaScript for its type safety, which in turn allows for better intellisense. Animation is very minimal, with just hovers and simple states to switch between tabs."
     },
     {
         thumbnail: Shader,
+        images:[Shader],
         title: "Shadertoy Experiments",
-        category: "Experiments"
+        category: "Experiments",
+        description:"In my pursuit of learning shaders, I came upon Shadertoy, where 2D and 3D shaders are made on a blank canvas using GLSL. I tinkered with it to come up with interesting patterns, and further my understanding."
     },
     {
         thumbnail: DeskClock,
+        images:[DeskClock],
         title: "Desk:Clock",
-        category: "Apps"
+        category: "Apps",
+        description:"Desk:Clock is my first WinUI3 app using C#. As the name implies, it's a simple clean app for telling the time. The aim of this project was to learn as much of the Windows API as possible, starting from Win32 all the way to UWP."
     },
     {
         thumbnail: CustomPlugin,
+        images:[CustomPlugin],
         title: "UE5 Custom Plugin",
-        category: "Experiments"
+        category: "Experiments",
+        description:"A Custom Asset type with its own editor that I am developing for a Unreal Engine project. The asset consists of a Soundwave and arrays of values that contain timestamps. The editor will show the waveform and a pointer mechanism to set timestamps. These can be used to create soundmaps for rhythm games. The custom asset is a regular UObject, and the editor involves the C++ Slate UI."
     },
     {
         thumbnail: PrayerClock,
+        images:[PrayerClock],
         title: "Prayer:Clock",
-        category: "Apps"
+        category: "Apps",
+        description:"Prayer:Clock is my second WinUI3 app, this time in C++ for the added difficulty and depth. Basically it's an minimalist app for indicating the next prayer time depending on the location. Alongside XAML and C++/WinRT, it makes use of open APIs to request the dataset of prayer times."
     },
     {
         thumbnail: PaulOak,
+        images:[PaulOak],
         title: "Paul_Oak",
-        category: "Apps"
+        category: "Apps",
+        description:"Paul_Oak is a flashcard app made in Flutter. The name is just a spin on a pronunciation of a Bengali word that means a flash. As my first project in flutter, it's merely the product of coming up with my own app to help me practice my German."
     }
 ]
 
@@ -97,11 +119,14 @@ function ProjectModalItem(props: {
     </div>;
 }
 
+
+
 export function ProjectGridSection() {
     const categories = ["All", "Games", "Apps", "Websites", "Experiments"]
     const [category, setCategory] = useState("All");
     const [modal, setModal] = useState(false);
-    const [modalItem, setModalItem] = useState({title: "", description: "", images: []})
+    const [{description, images, title}
+        , setModalItem] = useState({title: "", description: "", images: [""]})
 
     const isActiveCategory = (e:string) =>{return e == category ? "nav-active" : ""};
 
@@ -125,7 +150,7 @@ export function ProjectGridSection() {
                             thumbnail={e.thumbnail}
                             openModal={() => {
                                 setModal(true);
-                                setModalItem({title: e.title, description: "", images: []})
+                                setModalItem({title: e.title, description: e.description, images: e.images})
                             }
                         }/> : null
                 })
@@ -134,9 +159,9 @@ export function ProjectGridSection() {
         {modal &&
             <ProjectModalItem
                 onClick={() => setModal(false)}
-                title={modalItem.title}
-                description={modalItem.description}
-                images={modalItem.images}
+                title={title}
+                description={description}
+                images={images}
             />}
     </div>;
 }

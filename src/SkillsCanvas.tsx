@@ -56,8 +56,8 @@ function SetupCanvas(canvasRef: React.MutableRefObject<HTMLCanvasElement | null>
   const mediaQueryPortrait = window.matchMedia("(orientation:portrait)");
   window.matchMedia("(orientation:landscape)");
   if (mediaQueryPortrait.matches) {
-    maxParticles = 100
-     maxLineDistance = 75;
+    maxParticles = 150
+     maxLineDistance = 50;
    maxVelocity = 2;
 
   }
@@ -99,7 +99,7 @@ function SetupCanvas(canvasRef: React.MutableRefObject<HTMLCanvasElement | null>
       for (let jindex = 0; jindex < particles.length; jindex++) {
         if (index == jindex) continue;
         const jelement = particles[jindex];
-        let distance = Math.sqrt(Math.pow((element.x - jelement.x), 2) + Math.pow((element.y - jelement.y), 2))
+        const distance = Math.sqrt(Math.pow((element.x - jelement.x), 2) + Math.pow((element.y - jelement.y), 2))
         if (distance > maxLineDistance) { continue; }
         ctx.lineWidth = lineWidth
         ctx.strokeStyle = `rgba(255,255,255,${0.75 - distance / maxLineDistance})`
