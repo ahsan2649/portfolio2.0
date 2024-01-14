@@ -42,11 +42,11 @@ class Particle {
 
 
 function SetupCanvas(canvasRef: React.MutableRefObject<HTMLCanvasElement | null>) {
-  let particles: Particle[] = []
+  const particles: Particle[] = []
   let maxParticles = 100;
   let maxVelocity = 3;
   let maxLineDistance = 150;
-  let lineWidth = 2.5;
+  const lineWidth = 2.5;
   if (!canvasRef.current) { return; }
   if (!canvasRef.current.parentElement) { return; }
   
@@ -54,7 +54,7 @@ function SetupCanvas(canvasRef: React.MutableRefObject<HTMLCanvasElement | null>
   
 
   const mediaQueryPortrait = window.matchMedia("(orientation:portrait)");
-  const mediaQueryLandscape = window.matchMedia("(orientation:landscape)");
+  window.matchMedia("(orientation:landscape)");
   if (mediaQueryPortrait.matches) {
     maxParticles = 100
      maxLineDistance = 75;
